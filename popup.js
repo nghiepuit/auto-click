@@ -33,7 +33,6 @@ document.getElementById('stopClicking').addEventListener('click', async () => {
   updateButtonStates();
 });
 
-// Lắng nghe thông báo từ content script
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === 'ELEMENT_SELECTED') {
     document.getElementById('startClicking').disabled = false;

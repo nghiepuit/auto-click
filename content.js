@@ -20,7 +20,6 @@ function createHighlightOverlay(element) {
 }
 
 function startElementSelection() {
-    // Thêm custom cursor
     const cursorStyle = document.createElement('style');
     cursorStyle.id = 'custom-cursor-style';
     cursorStyle.textContent = `
@@ -31,7 +30,6 @@ function startElementSelection() {
     document.head.appendChild(cursorStyle);
     document.body.classList.add('custom-cursor');
 
-    // Thêm style cho hover effect
     const style = document.createElement('style');
     style.id = 'selector-style';
     style.textContent = `
@@ -101,7 +99,6 @@ function startElementSelection() {
         e.preventDefault();
         selectedElement = e.target;
         
-        // Cleanup
         document.removeEventListener('mouseover', handleMouseOver);
         document.removeEventListener('mouseout', handleMouseOut);
         document.removeEventListener('mousemove', handleMouseMove);
@@ -117,14 +114,12 @@ function startElementSelection() {
             el.classList.remove('element-hover');
         });
 
-        // Tạo highlight cho element được chọn
         if (highlightOverlay) {
             highlightOverlay.remove();
         }
         highlightOverlay = createHighlightOverlay(selectedElement);
         document.body.appendChild(highlightOverlay);
 
-        // Animation cho element được chọn
         highlightOverlay.style.animation = 'select-pulse 2s infinite';
         const pulseStyle = document.createElement('style');
         pulseStyle.textContent = `
@@ -158,7 +153,6 @@ function startAutoClicking(interval) {
     clickInterval = setInterval(() => {
         selectedElement.click();
         
-        // Thêm hiệu ứng flash khi click
         const flashOverlay = createHighlightOverlay(selectedElement);
         flashOverlay.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         flashOverlay.style.border = 'none';
@@ -177,7 +171,6 @@ function stopAutoClicking() {
     }
 }
 
-// Cập nhật vị trí highlight khi scroll
 window.addEventListener('scroll', () => {
     if (highlightOverlay && selectedElement) {
         const rect = selectedElement.getBoundingClientRect();

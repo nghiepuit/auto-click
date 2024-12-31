@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Auto Clicker Extension",
   "version": "1.0",
-  "description": "Extension để tự động click vào element",
+  "description": "Extension autoclick",
   "permissions": [
     "activeTab",
     "scripting"
